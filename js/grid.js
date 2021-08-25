@@ -5,6 +5,10 @@ export class Grid {
     this.cols = matrix[0].length;
   }
 
+  getMatrix() {
+    return this.matrix;
+  }
+
   getCell(row, col) {
     return this.matrix[row][col];
   }
@@ -39,25 +43,6 @@ export class Grid {
       }
     });
     return neighboursCounter;
-  }
-
-  getNextGeneration(){
-    this.matrix.forEach((row, x) => {
-      row.forEach((_column, y) => {
-        const totalLiveNeighbours = this.countLiveNeighbours(x,y);
-        this.applyRulesToMatrix(totalLiveNeighbours, x, y);
-      });
-    });
-    return this.matrix;
-  }
-
-  applyRulesToMatrix(totalLiveNeighbours, x, y){
-    if(this.matrix[x][y].isAlive() && (totalLiveNeighbours < 2 || totalLiveNeighbours > 3)){
-      this.matrix[x][y].die();
-    }
-    if(!this.matrix[x][y].isAlive() && totalLiveNeighbours == 3){
-      this.matrix[x][y].live();
-    }
   }
 
 }
