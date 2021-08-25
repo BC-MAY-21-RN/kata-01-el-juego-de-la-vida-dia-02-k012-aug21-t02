@@ -1,24 +1,28 @@
 export class Cell {
 
-    const states = {
+    states = {
         LIVE: "*",
         DEAD: "."
     }
-    
+
     constructor(state) {
         this.state = state;
     }
 
     die() {
-        this.state = states.DEAD;
+        this.state = this.states.DEAD;
     }
 
     live() {
-        this.state = states.LIVE;
+        this.state = this.states.LIVE;
     }
 
     isAlive() {
         return this.state === this.states.LIVE;
+    }
+
+    getState() {
+        return this.state;
     }
 
 }
